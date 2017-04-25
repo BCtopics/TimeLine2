@@ -31,3 +31,10 @@ class Post {
     }
     
 }
+
+extension Post: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        let matchingComments = comments.filter { $0.matches(searchTerm: searchTerm) }
+        return !matchingComments.isEmpty
+    }
+}
