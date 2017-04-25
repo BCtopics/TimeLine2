@@ -45,7 +45,26 @@ class PostDetailTableViewController: UITableViewController {
     
     @IBAction func commentButtonTapped(_ sender: Any) {
         
+        let alert = UIAlertController(title: "Add Comment", message: nil, preferredStyle: .alert)
         
+        alert.addTextField { (textField) in
+            textField.placeholder = "Comment Text"
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let ok = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            
+            guard let currentPost = self.post,
+                let commentBody = alert.textFields?.first?.text else { return }
+            
+            PostController.shared.addComment(toPost: currentPost, text: commentBody)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
         
     }
     
