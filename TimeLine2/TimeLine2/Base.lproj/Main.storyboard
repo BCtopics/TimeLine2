@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -180,23 +179,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="283.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ryv-8z-hbO">
-                                                    <rect key="frame" x="8" y="8" width="359" height="267.5"/>
-                                                </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUB-Rx-QXg">
-                                                    <rect key="frame" x="143" y="127" width="89" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Select Image"/>
+                                                <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51U-9R-5sn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                                                     <connections>
-                                                        <action selector="selectImageButtonTapped:" destination="gs9-uX-5HG" eventType="touchUpInside" id="j2G-rj-7bd"/>
+                                                        <segue destination="WOQ-Mq-qhD" kind="embed" identifier="embedSegue" id="mBu-2K-3TQ"/>
                                                     </connections>
-                                                </button>
+                                                </containerView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ryv-8z-hbO" firstAttribute="leading" secondItem="lHn-wB-Mtu" secondAttribute="leadingMargin" id="8On-Gx-OdT"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ryv-8z-hbO" secondAttribute="bottom" id="GTK-vx-neL"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ryv-8z-hbO" secondAttribute="trailing" id="lHz-MO-Fde"/>
-                                                <constraint firstItem="ryv-8z-hbO" firstAttribute="top" secondItem="lHn-wB-Mtu" secondAttribute="topMargin" id="sWJ-yD-pcu"/>
+                                                <constraint firstAttribute="bottom" secondItem="51U-9R-5sn" secondAttribute="bottom" constant="10.5" id="4f2-PY-vXM"/>
+                                                <constraint firstItem="51U-9R-5sn" firstAttribute="leading" secondItem="lHn-wB-Mtu" secondAttribute="leading" id="Bi6-Rw-LOE"/>
+                                                <constraint firstAttribute="trailing" secondItem="51U-9R-5sn" secondAttribute="trailing" id="pUq-Nf-JEB"/>
+                                                <constraint firstItem="51U-9R-5sn" firstAttribute="top" secondItem="lHn-wB-Mtu" secondAttribute="top" constant="11" id="tP2-Bb-yJM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -341,6 +335,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVV-Pa-8pR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="406" y="941"/>
+        </scene>
+        <!--Photo Select View Controller-->
+        <scene sceneID="ejJ-cs-PkL">
+            <objects>
+                <viewController id="WOQ-Mq-qhD" customClass="PhotoSelectViewController" customModule="TimeLine2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xlx-EO-gRi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUB-Rx-QXg">
+                                <rect key="frame" x="143" y="116" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Image"/>
+                                <connections>
+                                    <action selector="selectImageButtonTapped:" destination="gs9-uX-5HG" eventType="touchUpInside" id="j2G-rj-7bd"/>
+                                    <action selector="selectPhotoButtonTapped" destination="WOQ-Mq-qhD" eventType="touchUpInside" id="qz2-7r-K10"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ryv-8z-hbO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ryv-8z-hbO" secondAttribute="trailing" id="71O-Yv-EJL"/>
+                            <constraint firstItem="ryv-8z-hbO" firstAttribute="top" secondItem="Xlx-EO-gRi" secondAttribute="top" id="bkt-PK-dYE"/>
+                            <constraint firstAttribute="bottom" secondItem="ryv-8z-hbO" secondAttribute="bottom" id="joQ-R9-Jqv"/>
+                            <constraint firstItem="ryv-8z-hbO" firstAttribute="leading" secondItem="Xlx-EO-gRi" secondAttribute="leading" id="l7j-CM-b0P"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addPhotoButton" destination="IUB-Rx-QXg" id="DHL-p1-Isq"/>
+                        <outlet property="imageView" destination="ryv-8z-hbO" id="AV9-49-VOp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mcV-38-a7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1938" y="835"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

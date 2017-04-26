@@ -20,6 +20,10 @@ class AddPostTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    //MARK: - Properties
+    
+    var image: UIImage?
+    
     //MARK: - IBOutlets
     
     @IBOutlet weak var selectedImageButton: UIButton!
@@ -31,11 +35,11 @@ class AddPostTableViewController: UITableViewController {
     
     //MARK: - IBActions
     
-    @IBAction func selectImageButtonTapped(_ sender: Any) {
-        
-        selectedImageButton.setTitle("", for: .normal)
-        imageView.image = #imageLiteral(resourceName: "Kitten")
-    }
+//    @IBAction func selectImageButtonTapped(_ sender: Any) {
+//        
+//        selectedImageButton.setTitle("", for: .normal)
+//        imageView.image = #imageLiteral(resourceName: "Kitten")
+//    }
     
     @IBAction func addPostButtonTapped(_ sender: Any) {
         
@@ -61,5 +65,23 @@ class AddPostTableViewController: UITableViewController {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "embedSegue" {
+            
+            let embedViewController = segue.destination as? PhotoSelectViewController
+            embedViewController?.delegate = self
+        }
+    }
+    
+}
+
+extension AddPostTableViewController: PhotoSelectViewControllerDelegate {
+    
+    func photoSelectViewControllerSelected(_ image: UIImage) {
+        
+        self.image = image
     }
 }
