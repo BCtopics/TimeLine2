@@ -59,6 +59,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="j7w-Qt-N4p" kind="show" identifier="toPostDetailFromSearch" id="vd5-gn-IDj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cbj-NW-LJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,6 +344,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="vd5-gn-IDj"/>
         <segue reference="0HP-kb-nfl"/>
     </inferredMetricsTieBreakers>
 </document>
